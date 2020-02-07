@@ -29,6 +29,15 @@ Or install it yourself as:
 $ gem install redis_web_manager
 ```
 
+## TODO
+* [ ] Add filters to redis keys (filter by type, by expiration date...)
+* [ ] Add graph for most used commands
+* [ ] Manage multiple redis instances
+* [ ] Real time chart update
+* [ ] Alert system (ex: triggered when memory is peaking)
+* [ ] Command line interface to manage your redis database
+* [ ] Logs interface
+
 ## Contributing
 Contribution directions go here.
 
