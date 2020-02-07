@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.org/OpenGems/redis_web_manager.svg?branch=master)](https://travis-ci.org/OpenGems/redis_web_manager)
 [![security](https://hakiri.io/github/OpenGems/redis_web_manager/master.svg)](https://hakiri.io/github/OpenGems/redis_web_manager/master)
 ![Gem](https://img.shields.io/gem/dt/redis_web_manager)
+[![Coverage Status](https://coveralls.io/repos/github/OpenGems/redis_web_manager/badge.svg?branch=master)](https://coveralls.io/github/OpenGems/redis_web_manager?branch=master)
 
 Short description and motivation.
 
