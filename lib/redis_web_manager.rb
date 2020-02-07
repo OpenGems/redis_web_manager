@@ -10,8 +10,8 @@ require 'redis'
 
 module RedisWebManager
   mattr_accessor :redis, default: ::Redis.new
-  mattr_accessor :authenticate, default: nil
   mattr_accessor :lifespan, default: 15.days
+  mattr_accessor :authenticate, default: nil
 
   class << self
     def configure
