@@ -24,7 +24,6 @@ Check how many clients are connected and their infos.
 
 ![alt text](./images/images_clients.png)
 
-
 ## Usage
 
 1. Install the gem
@@ -52,8 +51,24 @@ Or install it yourself as:
 $ gem install redis_web_manager
 ```
 
+## Configuration
+
+You can configure RedisWebManager: 
+
+```ruby
+# initializers/redis_web_manager.rb
+
+RedisWebManager.configure do |config|
+  config.redis = Redis.new(db: 1) # Default Redis.new
+  config.lifespan = 2.days # Default 15.days
+  config.authenticate = 1 # Default nil
+end
+```
+
+
 ## Contributing
-Contribution directions go here.
+Bug reports and pull requests are welcome on GitHub at https://github.com/OpenGems/redis_web_manager. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
+
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
