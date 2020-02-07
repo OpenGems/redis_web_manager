@@ -3,9 +3,15 @@
 module RedisWebManager
   class ActionsController < ApplicationController
     # DELETE /flushdb
-    def flushdb; end
+    def flushdb
+      action.flushdb
+      redirect_to root_url
+    end
 
     # DELETE /flushall
-    def flushall; end
+    def flushall
+      action.flushall
+      redirect_to root_url
+    end
   end
 end

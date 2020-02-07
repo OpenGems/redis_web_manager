@@ -124,11 +124,11 @@ module RedisWebManager
 
     def format_key(key)
       {
-          key: key,
-          expire: info.expire(key),
-          node: get_value(key),
-          type: info.type(key),
-          memory: info.memory_usage(key)
+        key: key,
+        expire: info.expire(key),
+        node: get_value(key),
+        type: info.type(key),
+        memory: info.memory_usage(key)
       }
     end
   end
