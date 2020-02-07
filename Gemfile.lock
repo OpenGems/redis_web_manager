@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    redis_web_manager (0.1.5)
+    redis_web_manager (0.1.6)
       pagy (~> 3.7)
       rails (>= 5.2, < 7)
       redis (~> 4.1.0)
