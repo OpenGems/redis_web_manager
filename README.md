@@ -7,10 +7,25 @@
 ![Gem](https://img.shields.io/gem/dt/redis_web_manager)
 [![Coverage Status](https://coveralls.io/repos/github/OpenGems/redis_web_manager/badge.svg?branch=master)](https://coveralls.io/github/OpenGems/redis_web_manager?branch=master)
 
-Short description and motivation.
+Web interface that allows you to manage easily your Redis instance (see keys, memory used, connected client, etc...). 
+
+### Check your stats 
+The Dashboard allows you tu check the Memory usage, CPU and Redis clients.
+
+![alt text](./images/images_dashboard.png)
+
+### Manage your redis keys
+You can easily edit and delete any keys stored in your redis database.
+
+![alt text](./images/images_keys.png)
+
+### Keep an eye on your redis clients
+Check how many clients are connected and their infos.
+
+![alt text](./images/images_clients.png)
+
 
 ## Usage
-How to use my plugin.
 
 ## Installation
 Add this line to your application's Gemfile:
