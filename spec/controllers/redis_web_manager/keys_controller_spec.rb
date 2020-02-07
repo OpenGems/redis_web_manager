@@ -75,7 +75,7 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
       redis.lpush('lrange', '1')
       redis.lpush('lrange', '2')
       eql = {
-        length: 4,
+        length: 2,
         values: [
           {
             index: 0,
@@ -84,16 +84,6 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
           },
           {
             index: 1,
-            type: 'json',
-            value: 1
-          },
-          {
-            index: 2,
-            type: 'json',
-            value: 2
-          },
-          {
-            index: 3,
             type: 'json',
             value: 1
           }
