@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <%= link_to 'Redis Web Manager', root_path, title: 'Redis Web Manager', class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Redis Web Manager">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to 'Dashboard', root_path, title: 'Dashboard', class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Clients', clients_path, title: 'Clients', class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Keys', keys_path, title: 'Keys', class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Configuration', configuration_path, title: 'Configuration', class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Information', information_path, title: 'Information', class: 'nav-link' %>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to 'Flush ALL',
+                      flushall_url,
+                      title: 'Flush ALL',
+                      method: :delete,
+                      data: {
+                          confirm: 'Are you sure you want to flush all DB ?'
+                      },
+                      class: 'btn btn-sm btn-danger nav-link text-white mr-xs-0 mr-lg-2 mb-2 mb-lg-0' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Flush DB',
+                      flushdb_path,
+                      title: 'Flush DB',
+                      method: :delete,
+                      data: {
+                          confirm: 'Are you sure you want to flush DB ?'
+                      },
+                      class: 'btn btn-sm btn-danger nav-link text-white' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

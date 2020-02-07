@@ -1,0 +1,24 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+
+# rspec failure tracking
+.rspec_status
+
+# IDE
+/.idea
+.idea/workspace.xml
+.rakeTasks
+.generators
+
+# Gem
+*.gem
+
+# Logs
+spec/dummy/log/*.log
+spec/dummy/tmp/

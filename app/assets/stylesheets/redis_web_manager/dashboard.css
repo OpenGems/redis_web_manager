@@ -1,0 +1,28 @@
+.bounce {
+    animation: bounce .8s ease-out infinite;
+    -webkit-animation: bounce .8s ease-out infinite;
+}
+
+@keyframes bounce {
+    from {
+        box-shadow: 0 0 15px #6c757d;
+    }
+    50% {
+        box-shadow: 0 0 30px #6c757d;
+    }
+    to {
+        box-shadow: 0 0 15px #6c757d;
+    }
+}
+
+@-webkit-keyframes bounce {
+    from {
+        -webkit-box-shadow: 0 0 15px #6c757d;
+    }
+    50% {
+        -webkit-box-shadow: 0 0 30px #6c757d;
+    }
+    to {
+        -webkit-box-shadow: 0 0 15px #6c757d;
+    }
+}

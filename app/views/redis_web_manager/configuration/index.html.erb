@@ -1,0 +1,24 @@
+<div class="container">
+  <%= render 'redis_web_manager/shared/status' %>
+  <div class="row my-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">
+            Configuration
+          </h5>
+        </div>
+        <div class="card-body p-0">
+          <ul class="list-group list-group-flush">
+            <% @configurations.each do |k, v| %>
+              <li class="list-group-item d-flex justify-content-between">
+                <div class="font-weight-normal"><%= k %></div>
+                <div class="font-weight-light"><%= v %></div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      Redis Web Manager
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'redis_web_manager/application', media: 'all' %>
+    <%= javascript_include_tag 'redis_web_manager/application' %>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <%= render partial: 'redis_web_manager/shared/header' %>
+    <%= yield %>
+  </body>
+</html>

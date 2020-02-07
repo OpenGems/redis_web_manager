@@ -1,0 +1,58 @@
+<div class="container">
+  <%= render 'redis_web_manager/shared/status' %>
+  <div class="row my-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">
+            Clients
+          </h5>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table mb-0">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Age</th>
+                <th>Flag</th>
+                <th>Event</th>
+                <th>Last command</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @clients.each do |c| %>
+                <tr>
+                  <td class="align-middle">
+                    <%= c[:id] %>
+                  </td>
+                  <td class="align-middle">
+                    <%= c[:name] %>
+                  </td>
+                  <td class="align-middle">
+                    <%= c[:addr] %>
+                  </td>
+                  <td class="align-middle">
+                    <%= age(c[:age].to_i) %>
+                  </td>
+                  <td class="align-middle">
+                    <%= flags(c[:flags]) %>
+                  </td>
+                  <td class="align-middle">
+                    <%= events(c[:events]) %>
+                  </td>
+                  <td class="align-middle">
+                    <code><%= c[:cmd] %></code>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

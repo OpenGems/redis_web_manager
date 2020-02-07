@@ -1,0 +1,49 @@
+<div class="container">
+  <%= render 'redis_web_manager/shared/status' %>
+  <div class="row my-4">
+    <div class="col-sm-12 col-md-12">
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title mb-0">
+                Memory usage
+              </h5>
+            </div>
+            <div class="card-body">
+              <%= graph_canvas(@memory, :memory) %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-sm-4 mb-4">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title mb-0">
+                CPU
+              </h5>
+            </div>
+            <div class="card-body">
+              <%= graph_canvas(@cpu, :cpu) %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-sm-4 mb-4">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title mb-0">
+                Clients
+              </h5>
+            </div>
+            <div class="card-body">
+              <%= graph_canvas(@client, :client) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
