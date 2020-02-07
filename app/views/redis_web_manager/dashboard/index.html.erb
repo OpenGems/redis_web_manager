@@ -1,7 +1,7 @@
 <div class="container">
   <%= render 'redis_web_manager/shared/status' %>
   <div class="row my-4">
-    <div class="col-sm-12 col-md-12">
+    <div class="col-sm-12 col-md-9">
       <div class="row mb-4">
         <div class="col-12">
           <div class="card">
@@ -42,6 +42,25 @@
               <%= graph_canvas(@client, :client) %>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">
+            Information
+          </h5>
+        </div>
+        <div class="card-body p-0">
+          <ul class="list-group list-group-flush">
+            <% @information.each do |data| %>
+              <li class="list-group-item d-flex justify-content-between">
+                <div class="font-weight-normal"><%= data[:name] %></div>
+                <div class="font-weight-light"><%= data[:value] %></div>
+              </li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>
