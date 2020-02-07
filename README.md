@@ -12,17 +12,17 @@ Web interface that allows you to manage easily your Redis instance (see keys, me
 ### Check your stats 
 The Dashboard allows you tu check the Memory usage, CPU and Redis clients.
 
-![alt text](./images/images_dashboard.png)
+![RedisWebManager Dashboard](./images/images_dashboard.png)
 
 ### Manage your redis keys
 You can easily edit and delete any keys stored in your redis database.
 
-![alt text](./images/images_keys.png)
+![RedisWebManager Keys](./images/images_keys.png)
 
 ### Keep an eye on your redis clients
 Check how many clients are connected and their infos.
 
-![alt text](./images/images_clients.png)
+![RedisWebManager Clients](./images/images_clients.png)
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -48,6 +48,26 @@ mount RedisWebManager::Engine => '/redis_web_manager'
 
 Access to RedisWebManager at `/redis_web_manager`
 
+## Configuration
+
+You can configure RedisWebManager: 
+
+```ruby
+# initializers/redis_web_manager.rb
+
+RedisWebManager.configure do |config|
+  config.redis = Redis.new(db: 1) # Default Redis.new (Instance of Redis)
+  config.lifespan = 2.days # Default 15.days (Lifespan of each keys)
+  config.authenticate = proc {
+                           authenticate_or_request_with_http_basic do |username, password|
+                              username == 'TEST' && password == 'TEST'
+                            end
+                          } # Default nil (Authenticate method to secure tools)
+end
+```
+
+## Collect 
+
 ## TODO
 * [ ] Add filters to redis keys (filter by type, by expiration date...)
 * [ ] Add graph for most used commands
@@ -57,19 +77,6 @@ Access to RedisWebManager at `/redis_web_manager`
 * [ ] Command line interface to manage your redis database
 * [ ] Logs interface
 
-## Configuration
-
-You can configure RedisWebManager: 
-
-```ruby
-# initializers/redis_web_manager.rb
-
-RedisWebManager.configure do |config|
-  config.redis = Redis.new(db: 1) # Default Redis.new
-  config.lifespan = 2.days # Default 15.days
-  config.authenticate = 1 # Default nil
-end
-```
 
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/OpenGems/redis_web_manager. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.

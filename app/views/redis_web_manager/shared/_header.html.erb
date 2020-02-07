@@ -24,14 +24,24 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
+          <%= link_to 'Reset statistics',
+                      reset_path,
+                      title: 'Reset statistics',
+                      method: :delete,
+                      data: {
+                          confirm: 'Are you sure you want to reset statistics ?'
+                      },
+                      class: 'btn btn-sm btn-info nav-link text-white mr-xs-0 mr-lg-2 mb-2 mb-lg-0' %>
+        </li>
+        <li class="nav-item">
           <%= link_to 'Flush ALL',
-                      flushall_url,
+                      flushall_path,
                       title: 'Flush ALL',
                       method: :delete,
                       data: {
                           confirm: 'Are you sure you want to flush all DB ?'
                       },
-                      class: 'btn btn-sm btn-danger nav-link text-white mr-xs-0 mr-lg-2 mb-2 mb-lg-0' %>
+                      class: 'btn btn-sm btn-dark nav-link text-white mr-xs-0 mr-lg-2 mb-2 mb-lg-0' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Flush DB',
