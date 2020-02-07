@@ -53,7 +53,7 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
     it 'returns a hash value (get_value - string)' do
       redis.set('test', 'test')
       eql = {
-          value: 'test'
+        value: 'test'
       }
       expect(controller.send(:get_value, 'test')).to eql(eql)
     end
@@ -131,7 +131,7 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
       redis.zadd('zrange', 20, '2')
       redis.zadd('zrange', 30, '3')
       eql = {
-          value: 'Not found'
+        value: 'Not found'
       }
       expect(controller.send(:get_value, 'testtesttesttesttest')).to eql(eql)
     end

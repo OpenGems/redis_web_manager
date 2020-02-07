@@ -24,16 +24,6 @@ Check how many clients are connected and their infos.
 
 ![alt text](./images/images_clients.png)
 
-## Usage
-
-1. Install the gem
- 
-2. Launch your rails server
-
-3. in your `routes.rb` add : `mount RedisWebManager::Engine => '/redis_web_manager'`
- 
-3. Go to `/redis_web_manager` to access to the dashboard
-
 ## Installation
 Add this line to your application's Gemfile:
 
@@ -51,7 +41,13 @@ Or install it yourself as:
 $ gem install redis_web_manager
 ```
 
-<<<<<<< HEAD
+Add the custom route in your `routes.rb`:
+```
+mount RedisWebManager::Engine => '/redis_web_manager'
+```
+
+Access to RedisWebManager at `/redis_web_manager`
+
 ## TODO
 * [ ] Add filters to redis keys (filter by type, by expiration date...)
 * [ ] Add graph for most used commands
