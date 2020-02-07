@@ -60,12 +60,12 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
 
     it 'returns a hash value (get_value - hgetall)' do
       eql = {
-          value: {
-              'name' => {
-                  type: 'string',
-                  value: 'hgetall'
-              }
+        value: {
+          'name' => {
+            type: 'string',
+            value: 'hgetall'
           }
+        }
       }
       redis.hset('hgetall', 'name', 'hgetall')
       expect(controller.send(:get_value, 'hgetall')).to eql(eql)
@@ -75,19 +75,29 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
       redis.lpush('lrange', '1')
       redis.lpush('lrange', '2')
       eql = {
-          length: 2,
-          values: [
-              {
-                  index: 0,
-                  type: 'json',
-                  value: 2
-              },
-              {
-                  index: 1,
-                  type: 'json',
-                  value: 1
-              }
-          ]
+        length: 4,
+        values: [
+          {
+            index: 0,
+            type: 'json',
+            value: 2
+          },
+          {
+            index: 1,
+            type: 'json',
+            value: 1
+          },
+          {
+            index: 2,
+            type: 'json',
+            value: 2
+          },
+          {
+            index: 3,
+            type: 'json',
+            value: 1
+          },
+        ]
       }
       expect(controller.send(:get_value, 'lrange')).to eql(eql)
     end
@@ -95,7 +105,7 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
     it 'returns a hash value (get_value - set)' do
       redis.sadd('smembers', 'smembers')
       eql = {
-          values: [{ type: 'string', value: 'smembers' }]
+        values: [{ type: 'string', value: 'smembers' }]
       }
       expect(controller.send(:get_value, 'smembers')).to eql(eql)
     end
@@ -105,23 +115,23 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
       redis.zadd('zrange', 20, '2')
       redis.zadd('zrange', 30, '3')
       eql = {
-          values: [
-              {
-                  score: 10.0,
-                  type: 'json',
-                  value: 1
-              },
-              {
-                  score: 20.0,
-                  type: 'json',
-                  value: 2
-              },
-              {
-                  score: 30.0,
-                  type: 'json',
-                  value: 3
-              }
-          ]
+        values: [
+          {
+            score: 10.0,
+            type: 'json',
+            value: 1
+          },
+          {
+            score: 20.0,
+            type: 'json',
+            value: 2
+          },
+          {
+            score: 30.0,
+            type: 'json',
+            value: 3
+          }
+        ]
       }
       expect(controller.send(:get_value, 'zrange')).to eql(eql)
     end
