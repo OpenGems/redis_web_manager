@@ -6,6 +6,12 @@ RSpec.describe RedisWebManager::ActionsController, type: :routing do
   routes { RedisWebManager::Engine.routes }
 
   describe 'routing' do
+    it 'routes to #reset' do
+      expect(delete: '/reset').to(
+        route_to('redis_web_manager/actions#reset')
+      )
+    end
+
     it 'routes to #flushdb' do
       expect(delete: '/flushdb').to(
         route_to('redis_web_manager/actions#flushdb')

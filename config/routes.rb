@@ -18,6 +18,7 @@ RedisWebManager::Engine.routes.draw do
   get :clients, to: 'clients#index'
 
   # Actions
+  delete :reset, to: 'actions#reset'
   delete :flushdb, to: 'actions#flushdb'
   delete :flushall, to: 'actions#flushall'
 
