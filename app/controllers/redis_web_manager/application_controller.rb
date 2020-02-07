@@ -27,5 +27,9 @@ module RedisWebManager
     def action
       @action ||= RedisWebManager::Action.new
     end
+
+    def data
+      @data ||= RedisWebManager::Data.new
+    end
   end
 end
