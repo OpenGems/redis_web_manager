@@ -27,6 +27,14 @@ Check how many clients are connected and their infos.
 
 ## Usage
 
+1. Install the gem
+ 
+2. Launch your rails server
+
+3. in your `routes.rb` add : `mount RedisWebManager::Engine => '/redis_web_manager'`
+ 
+3. Go to `/redis_web_manager` to access to the dashboard
+
 ## Installation
 Add this line to your application's Gemfile:
 
