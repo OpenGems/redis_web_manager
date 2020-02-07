@@ -2,6 +2,10 @@
 
 module RedisWebManager
   module ApplicationHelper
+    require 'pagy'
+
+    include ::Pagy::Frontend
+
     def expire(value)
       if value == -1
         'No expiration date'

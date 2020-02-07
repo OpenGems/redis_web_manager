@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col-sm-6 offset-sm-3">
+      <%= form_tag update_key_path, method: :put, class: "form-horizontal center" do %>
+        <div class="form-group">
+          <%= label_tag :key, "Name key:", class: "control-label" %>
+          <%= text_field_tag :key, @key[:key], class: "form-control" %>
+          <%= hidden_field_tag :old_key, @key[:key] %>
+        </div>
+        <%= submit_tag "Submit", class: "btn btn-default btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
