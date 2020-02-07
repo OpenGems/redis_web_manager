@@ -7,7 +7,7 @@
 ![Gem](https://img.shields.io/gem/dt/redis_web_manager)
 [![Coverage Status](https://coveralls.io/repos/github/OpenGems/redis_web_manager/badge.svg?branch=master)](https://coveralls.io/github/OpenGems/redis_web_manager?branch=master)
 
-Short description and motivation.
+Manage your Redis instance (See keys, memory used, connected client, configuration, information)
 
 ## Usage
 How to use my plugin.
@@ -29,6 +29,7 @@ Or install it yourself as:
 $ gem install redis_web_manager
 ```
 
+<<<<<<< HEAD
 ## TODO
 * [ ] Add filters to redis keys (filter by type, by expiration date...)
 * [ ] Add graph for most used commands
@@ -37,9 +38,26 @@ $ gem install redis_web_manager
 * [ ] Alert system (ex: triggered when memory is peaking)
 * [ ] Command line interface to manage your redis database
 * [ ] Logs interface
+=======
+## Configuration
+
+You can configure RedisWebManager: 
+
+```ruby
+# initializers/redis_web_manager.rb
+
+RedisWebManager.configure do |config|
+  config.redis = Redis.new(db: 1) # Default Redis.new
+  config.lifespan = 2.days # Default 15.days
+  config.authenticate = 1 # Default nil
+end
+```
+
+>>>>>>> master
 
 ## Contributing
-Contribution directions go here.
+Bug reports and pull requests are welcome on GitHub at https://github.com/OpenGems/redis_web_manager. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
+
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
