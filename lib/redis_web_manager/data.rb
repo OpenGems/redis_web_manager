@@ -4,13 +4,29 @@ module RedisWebManager
   class Data < Base
     BASE = 'RedisWebManager'
 
+    def keys
+      data.map { |key| JSON.parse(redis.get(key), symbolize_names: true) }
+    end
+
     def perform
       now = Time.now.to_i
       seconds = (now + lifespan.to_i) - now
       redis.setex("#{BASE}_#{now}", seconds, serialize.to_json)
     end
 
+    def flush
+      data.map { |key| redis.del(key) }
+    end
+
     private
+
+    def data
+      @data ||= redis.scan_each(match: "#{BASE}_*").to_a
+    end
+
+    def lifespan
+      @lifespan ||= RedisWebManager.lifespan
+    end
 
     def serialize
       {
