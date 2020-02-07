@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.test_files = Dir['spec/**/*']
 
+  spec.add_development_dependency 'coveralls', '~> 0.8'
   spec.add_development_dependency 'rspec-rails', '= 4.0.0.beta3'
 
   spec.add_dependency 'rails', '>= 5.2', '< 7'
