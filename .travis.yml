@@ -7,6 +7,7 @@ services:
 rvm:
   - 2.5.5
   - 2.6.3
+  - 2.7.0
 gemfile:
   - gemfiles/Gemfile-5-2
   - gemfiles/Gemfile-6-0
