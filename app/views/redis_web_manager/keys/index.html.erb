@@ -1,0 +1,54 @@
+<div class="container">
+  <%= render 'redis_web_manager/shared/status' %>
+  <div class="row my-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">
+            Keys
+          </h5>
+        </div>
+        <div class="card-body p-0">
+          <%= form_tag(keys_path, method: :get, class: 'p-4', enforce_utf8: false) do %>
+            <div class="input-group">
+              <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search key(s)' %>
+              <div class="input-group-append">
+                <%= submit_tag 'Search', class: 'btn btn-primary', name: nil %>
+              </div>
+            </div>
+          <% end %>
+          <div class="table-responsive">
+            <table class="table mb-0">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Expiration Date</th>
+                <th>Size</th>
+                <th>Type</th>
+                <th>Options</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @keys.each do |key| %>
+                <tr>
+                  <td><%= link_to (key[:key]).truncate(45), key_path(key: key[:key]), title: "Show #{key[:key]}" %></td>
+                  <td><%= expire(key[:expire]) %></td>
+                  <td><code><%= number_to_human_size(key[:memory]) %></code></td>
+                  <td><kbd class="bg-dark"><%= key[:type] %></kbd></td>
+                  <td>
+                    <%= link_to 'Edit', edit_key_path(key: key[:key]), title: "Edit #{key[:key]}", class: 'btn btn-sm btn-primary ml-2' %>
+                    <%= link_to 'Delete', destroy_key_path(key: key[:key]), method: :delete, data: {confirm: 'Are you sure ?'}, title: "Delete #{key[:key]}", class: 'btn btn-sm btn-danger ml-2' %>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-center mt-3">
+        <%= pagy_bootstrap_nav(@pagy).html_safe %>
+      </div>
+    </div>
+  </div>
+</div>

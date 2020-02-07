@@ -7,6 +7,13 @@ RedisWebManager::Engine.routes.draw do
   # Information
   get :information, to: 'information#index'
 
+  # Keys
+  get 'keys' => 'keys#index'
+  get 'key' => 'keys#show'
+  get 'key/edit' => 'keys#edit', as: :edit_key
+  put 'keys' => 'keys#update', as: :update_key
+  delete 'keys' => 'keys#destroy', as: :destroy_key
+
   # Clients
   get :clients, to: 'clients#index'
 

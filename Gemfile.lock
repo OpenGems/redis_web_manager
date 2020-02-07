@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    redis_web_manager (0.1.5)
+    redis_web_manager (0.1.6)
+      pagy (~> 3.7)
       rails (>= 5.2, < 7)
       redis (~> 4.1.0)
 
@@ -87,6 +88,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
+    pagy (3.7.2)
     rack (2.1.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)

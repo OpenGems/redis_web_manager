@@ -36,6 +36,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'rspec-rails', '= 4.0.0.beta3'
 
+  spec.add_dependency 'pagy', '~> 3.7'
   spec.add_dependency 'rails', '>= 5.2', '< 7'
   spec.add_dependency 'redis', '~> 4.1.0'
 end
