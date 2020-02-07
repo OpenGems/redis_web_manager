@@ -176,6 +176,7 @@ DEPENDENCIES
   coveralls (~> 0.8)
   redis_web_manager!
   rspec-rails (= 4.0.0.beta3)
+  simplecov (~> 0.16)
 
 BUNDLED WITH
    2.1.4

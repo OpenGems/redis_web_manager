@@ -6,8 +6,10 @@
 # this file to always be loaded, without a need to explicitly require it in any
 # files.
 
+require 'simplecov'
 require 'coveralls'
 
+SimpleCov.start
 Coveralls.wear!
 
 # Given that it is always loaded, you are encouraged to keep this file as
