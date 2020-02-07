@@ -96,7 +96,7 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
             index: 3,
             type: 'json',
             value: 1
-          },
+          }
         ]
       }
       expect(controller.send(:get_value, 'lrange')).to eql(eql)
