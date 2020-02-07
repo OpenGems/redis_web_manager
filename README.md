@@ -1,5 +1,10 @@
 # RedisWebManager
 
+[![Gem Version](https://badge.fury.io/rb/redis_web_manager.svg)](https://badge.fury.io/rb/redis_web_manager)
+[![Build Status](https://travis-ci.org/OpenGems/redis_web_manager.svg?branch=master)](https://travis-ci.org/OpenGems/redis_web_manager)
+[![security](https://hakiri.io/github/OpenGems/redis_web_manager/master.svg)](https://hakiri.io/github/OpenGems/redis_web_manager/master)
+![Gem](https://img.shields.io/gem/dt/redis_web_manager)
+
 Short description and motivation.
 
 ## Usage

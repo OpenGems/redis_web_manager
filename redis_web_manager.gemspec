@@ -10,11 +10,10 @@ Gem::Specification.new do |spec|
   spec.name        = 'redis_web_manager'
   spec.version     = RedisWebManager::VERSION
 
-  spec.authors     = ['Boris BRESCIANI', 'Benjamin DARCET', 'Olivier DUMAS', 'Sylvain KRAISIN']
+  spec.authors     = ['Boris BRESCIANI', 'Benjamin DARCET', 'Olivier DUMAS']
   spec.email       = %w[boris2bresciani@gmail.com
                         b.darcet@gmail.com
-                        dumas.olivier@outlook.fr
-                        sylvain.kraisin@gmail.com]
+                        dumas.olivier@outlook.fr]
 
   spec.summary     = 'Manage your Redis instance (See keys, memory used, connected client, etc...)'
   spec.description = 'Manage your Redis instance (See keys, memory used, connected client, configuration, information)'
