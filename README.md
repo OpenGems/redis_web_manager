@@ -12,17 +12,17 @@ Web interface that allows you to manage easily your Redis instance (see keys, me
 ### Check your stats 
 The Dashboard allows you tu check the Memory usage, CPU and Redis clients.
 
-![RedisWebManager Dashboard](./images/images_dashboard.png)
+![RedisWebManager Dashboard](images/images_dashboard.png)
 
 ### Manage your redis keys
 You can easily edit and delete any keys stored in your redis database.
 
-![RedisWebManager Keys](./images/images_keys.png)
+![RedisWebManager Keys](images/images_keys.png)
 
 ### Keep an eye on your redis clients
 Check how many clients are connected and their infos.
 
-![RedisWebManager Clients](./images/images_clients.png)
+![RedisWebManager Clients](images/images_clients.png)
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -57,7 +57,7 @@ You can configure RedisWebManager:
 
 RedisWebManager.configure do |config|
   config.redis = Redis.new(db: 1) # Default Redis.new (Instance of Redis)
-  config.lifespan = 2.days # Default 15.days (Lifespan of each keys)
+  config.lifespan = 2.days # Default 15.days (Lifespan of each keys for dashboard)
   config.authenticate = proc {
                            authenticate_or_request_with_http_basic do |username, password|
                               username == 'TEST' && password == 'TEST'
@@ -66,9 +66,43 @@ RedisWebManager.configure do |config|
 end
 ```
 
-## Collect 
+## Collect data for dashboard
 
-## TODO
+In order to have data on your dashboard you must collect the data like this:
+```ruby
+data = RedisWebManager::Data.new
+data.perform
+```
+
+If you are using a system to run background tasks in your application (like Sidekiq, Sucker Punch or ActiveJob), you can write your own background task to update the dashboard statistics.
+
+Sidekiq exemple:
+```ruby
+class DashboardWorker
+  include Sidekiq::Worker
+
+  def perform
+    data = RedisWebManager::Data.new
+    data.perform
+  end
+end
+```
+
+Sucker Punch exemple:
+```ruby
+class DashboardJob
+  include SuckerPunch::Job
+
+  def perform
+    data = RedisWebManager::Data.new
+    data.perform
+  end
+end
+```
+
+
+
+## Todo
 * [ ] Add filters to redis keys (filter by type, by expiration date...)
 * [ ] Add graph for most used commands
 * [ ] Manage multiple redis instances
