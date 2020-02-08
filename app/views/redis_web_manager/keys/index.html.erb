@@ -9,13 +9,16 @@
           </h5>
         </div>
         <div class="card-body p-0">
-          <%= form_tag(keys_path, method: :get, class: 'p-4', enforce_utf8: false) do %>
-            <div class="input-group">
-              <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search key(s)' %>
-              <div class="input-group-append">
-                <%= submit_tag 'Search', class: 'btn btn-primary', name: nil %>
-              </div>
+          <%= form_tag(keys_path, method: :get, class: 'p-4 form-inline', enforce_utf8: false) do %>
+            <div class="form-group">
+              <%= label_tag :query, 'Name' %>
+              <%= text_field_tag :query, params[:query], class: 'form-control mx-2', placeholder: 'Search key(s)' %>
             </div>
+            <div class="form-group">
+              <%= label_tag :type, 'Type' %>
+              <%= select_tag :type, options_for_select(types, params[:type]), class: 'form-control custom-select mx-2' %>
+            </div>
+            <%= submit_tag 'Search', class: 'btn btn-primary ml-4', name: nil %>
           <% end %>
           <div class="table-responsive">
             <table class="table mb-0">
@@ -36,7 +39,7 @@
                   <td><code><%= number_to_human_size(key[:memory]) %></code></td>
                   <td><kbd class="bg-dark"><%= key[:type] %></kbd></td>
                   <td>
-                    <%= link_to 'Edit', edit_key_path(key: key[:key]), title: "Edit #{key[:key]}", class: 'btn btn-sm btn-primary ml-2' %>
+                    <%= link_to 'Edit', edit_key_path(key: key[:key]), title: "Edit #{key[:key]}", class: 'btn btn-sm btn-primary' %>
                     <%= link_to 'Delete', destroy_key_path(key: key[:key]), method: :delete, data: {confirm: 'Are you sure ?'}, title: "Delete #{key[:key]}", class: 'btn btn-sm btn-danger ml-2' %>
                   </td>
                 </tr>
