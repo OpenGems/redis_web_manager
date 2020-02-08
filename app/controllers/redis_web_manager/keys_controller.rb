@@ -10,15 +10,9 @@ module RedisWebManager
 
     # GET /keys
     def index
-      query = params[:query].presence
-      @keys = if query.present?
-                info.search(query).map { |key| format_key(key) }
-              else
-                info.keys.map { |key| format_key(key) }
-              end
       @status = info.status
       @url = connection.id
-      @pagy, @keys = pagy_array(@keys)
+      @pagy, @keys = pagy_array(keys)
     end
 
     # GET /key/:key
@@ -54,13 +48,14 @@ module RedisWebManager
 
     private
 
+    # FIXME: - Refactoring
+    #        - Move this part
     def item_type(value)
       ['json', JSON.parse(value)]
     rescue JSON::ParserError
       ['string', value]
     end
 
-    # Get values for Redis List type
     def get_list(key)
       start = 0
       stop  = 99
@@ -74,7 +69,6 @@ module RedisWebManager
       { length: length, values: values }
     end
 
-    # Get values for Redis Set type
     def get_set(key)
       values = info.smembers(key).map do |e|
         type, value = item_type(e)
@@ -84,7 +78,6 @@ module RedisWebManager
       { values: values }
     end
 
-    # Get values for Redis Zset type
     def get_zset(key)
       values = info.zrange(key, 0, -1, withscores: true).map do |e, score|
         type, value = item_type(e)
@@ -94,7 +87,6 @@ module RedisWebManager
       { values: values }
     end
 
-    # Get values for Redis Hash type
     def get_hash(key)
       value = Hash[info.hgetall(key).map do |k, v|
         type, value = item_type(v)
@@ -105,8 +97,7 @@ module RedisWebManager
     end
 
     def get_value(key)
-      type = info.type(key)
-      case type
+      case info.type(key)
       when 'string'
         { value: info.get(key) }
       when 'list'
@@ -130,6 +121,15 @@ module RedisWebManager
         type: info.type(key),
         memory: info.memory_usage(key)
       }
+    end
+
+    def keys
+      query = params[:query].presence
+      type = params[:type].presence
+      keys = query ? info.search(query) : info.keys
+      keys = keys.map { |key| format_key(key) }
+      valid = type && type != 'All'
+      valid ? keys.select { |key| key[:type] == type } : keys
     end
   end
 end
