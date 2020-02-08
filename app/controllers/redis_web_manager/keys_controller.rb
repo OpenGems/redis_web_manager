@@ -129,7 +129,7 @@ module RedisWebManager
       keys = query ? info.search(query) : info.keys
       keys = keys.map { |key| format_key(key) }
       valid = type && type != 'All'
-      valid ? keys.select { |key| key[:type] == type.downcase } : keys
+      valid ? keys.select { |key| key[:type] == type } : keys
     end
   end
 end
