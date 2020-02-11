@@ -20,9 +20,6 @@ RSpec.describe RedisWebManager::Info do
       expect(info.stats).to be_a_kind_of(Hash)
     end
 
-    it 'returns a Array class (keys)' do
-      expect(info.keys).to be_a_kind_of(Array)
-    end
 
     it 'returns a string value (type)' do
       redis.set('test', 'test', ex: 20.seconds)

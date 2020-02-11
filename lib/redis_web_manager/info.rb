@@ -10,12 +10,8 @@ module RedisWebManager
       @stats ||= redis.info
     end
 
-    def keys
-      @keys ||= redis.keys
-    end
-
     def search(query)
-      redis.scan_each(match: "*#{query.downcase}*").to_a
+      redis.scan_each(match: "*#{query.try(:downcase)}*").to_a
     end
 
     def type(key)

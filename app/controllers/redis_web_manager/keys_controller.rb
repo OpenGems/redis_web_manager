@@ -126,9 +126,8 @@ module RedisWebManager
     def keys
       query = params[:query].presence
       type = params[:type].presence
-      keys = query ? info.search(query) : info.keys
-      keys = keys.map { |key| format_key(key) }
-      valid = type && type != 'All'
+      keys = info.search(query).map { |key| format_key(key) }
+      valid = type && type != 'all'
       valid ? keys.select { |key| key[:type] == type } : keys
     end
   end

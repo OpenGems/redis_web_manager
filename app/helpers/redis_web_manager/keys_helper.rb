@@ -3,7 +3,12 @@
 module RedisWebManager
   module KeysHelper
     def types
-      %w[All string hash set zset list]
+      [%w[All all],
+       %w[String string],
+       %w[Hash hash],
+       %w[Set set],
+       %w[Zset zset],
+       %w[List list]]
     end
   end
 end
