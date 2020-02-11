@@ -10,7 +10,7 @@
 Web interface that allows you to manage easily your Redis instance (see keys, memory used, connected client, etc...). 
 
 ### Check your stats 
-The Dashboard allows you tu check the Memory usage, CPU and Redis clients.
+The Dashboard allows you to check the Memory usage, CPU and Redis clients.
 
 ![RedisWebManager Dashboard](images/images_dashboard.png)
 
