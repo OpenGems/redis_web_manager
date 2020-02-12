@@ -12,7 +12,13 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
     it 'returns a success response' do
       get :index
       expect(response).to be_successful
-      get :index, params: { query: 'Search' }
+      get :index, params: { query: 'test' }
+      expect(response).to be_successful
+      get :index, params: { type: 'string' }
+      expect(response).to be_successful
+      get :index, params: { expiry_date: '-1' }
+      expect(response).to be_successful
+      get :index, params: { expiry_date: '3600' }
       expect(response).to be_successful
     end
   end

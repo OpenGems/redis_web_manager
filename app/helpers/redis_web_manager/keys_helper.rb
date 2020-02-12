@@ -2,7 +2,7 @@
 
 module RedisWebManager
   module KeysHelper
-    def types
+    def types_filters
       [%w[All all],
        %w[String string],
        %w[Hash hash],
@@ -12,13 +12,12 @@ module RedisWebManager
     end
 
     def expiry_date_filters
-      {
-        all: 'All',
-        no_expiry: 'No Expiry',
-        less_than_one_hour: 'Less Than One Hour',
-        less_than_one_week: 'Less Than One Week',
-        less_than_one_month: 'Less Than One Month'
-      }
+      [%w[All all],
+       ['No expiry', -1],
+       ['Less than 1 hour', 3600],
+       ['Less than 1 week', 604_800],
+       ['Less than 1 month', 2_592_000],
+       ['Less than 6 months', 15_552_000]]
     end
   end
 end
