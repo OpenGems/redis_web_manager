@@ -125,10 +125,29 @@ module RedisWebManager
 
     def keys
       query = params[:query].presence
-      type = params[:type].presence
       keys = info.search(query).map { |key| format_key(key) }
-      valid = type && type != 'all'
-      valid ? keys.select { |key| key[:type] == type } : keys
+
+      keys = filter_by_type(keys, params[:type])
+      filter_by_expiry_date(keys, params[:expiry_date])
+    end
+
+    def filter_by_type(keys, type)
+      return keys if validate_filter(type)
+      keys.select { |key| key[:type].eql?(type) }
+    end
+
+    def filter_by_expiry_date(keys, expiry_date)
+      return keys if validate_filter(expiry_date)
+
+      expired = expiry_date.eql?('no_expiry')
+      return keys.select { |key| key[:expire].eql?(-1) } if expired
+
+      duration = DURATION[expiry_date.to_sym]
+      keys.select { |key| key[:expire] != -1 && key[:expire] < duration }
+    end
+
+    def validate_filter(option)
+      option.blank? || option.eql?('all')
     end
   end
 end
