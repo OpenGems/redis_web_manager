@@ -10,5 +10,15 @@ module RedisWebManager
        %w[Zset zset],
        %w[List list]]
     end
+
+    def expiry_date_filters
+      {
+        all: 'All',
+        no_expiry: 'No Expiry',
+        less_than_one_hour: 'Less Than One Hour',
+        less_than_one_week: 'Less Than One Week',
+        less_than_one_month: 'Less Than One Month'
+      }
+    end
   end
 end

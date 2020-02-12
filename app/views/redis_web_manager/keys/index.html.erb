@@ -18,6 +18,10 @@
               <%= label_tag :type, 'Type' %>
               <%= select_tag :type, options_for_select(types, params[:type]), class: 'form-control custom-select mx-2' %>
             </div>
+            <div class='form-group'>
+              <%= label_tag :expiry_date, 'Expiration Date' %>
+              <%= select_tag :expiry_date, options_for_select(expiry_date_filters.collect(&:reverse), params[:expiry_date]), class: 'form-control' %>
+            </div>
             <%= submit_tag 'Search', class: 'btn btn-primary ml-4', name: nil %>
           <% end %>
           <div class="table-responsive">
