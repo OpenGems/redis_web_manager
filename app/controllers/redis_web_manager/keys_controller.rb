@@ -116,7 +116,7 @@ module RedisWebManager
     def format_key(key)
       {
         key: key,
-        expire: info.expire(key),
+        expiry: info.expiry(key),
         node: get_value(key),
         type: info.type(key),
         memory: info.memory_usage(key)
@@ -126,7 +126,8 @@ module RedisWebManager
     def keys
       keys = info.search(params[:query].presence).map { |key| format_key(key) }
       keys = filter_by_type(keys, params[:type].presence)
-      filter_by_expiry_date(keys, params[:expiry_date].presence)
+      keys = filter_by_expiry(keys, params[:expiry].presence)
+      filter_by_memory(keys, params[:expiry].presence)
     end
 
     def filter_by_type(keys, type)
@@ -134,11 +135,16 @@ module RedisWebManager
       keys.select { |key| key[:type] == type }
     end
 
-    def filter_by_expiry_date(keys, expiry_date)
-      return keys if invalid_option(expiry_date)
-      duration = expiry_date.to_i
-      return keys.select { |key| key[:expire] == -1 } if duration == -1
-      keys.select { |key| key[:expire] != -1 && key[:expire] < duration }
+    def filter_by_expiry(keys, expiry)
+      return keys if invalid_option(expiry)
+      duration = expiry.to_i
+      return keys.select { |key| key[:expiry] == -1 } if duration == -1
+      keys.select { |key| key[:expiry] != -1 && key[:expiry] < duration }
+    end
+
+    def filter_by_memory(keys, memory)
+      return keys if invalid_option(memory)
+      keys.select { |key| key[:memory] < memory.to_i }
     end
 
     def invalid_option(option)

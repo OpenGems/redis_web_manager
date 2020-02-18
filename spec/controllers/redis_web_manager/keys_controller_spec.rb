@@ -16,9 +16,11 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
       expect(response).to be_successful
       get :index, params: { type: 'string' }
       expect(response).to be_successful
-      get :index, params: { expiry_date: '-1' }
+      get :index, params: { expiry: '-1' }
       expect(response).to be_successful
-      get :index, params: { expiry_date: '3600' }
+      get :index, params: { expiry: '3600' }
+      expect(response).to be_successful
+      get :index, params: { memory: '1000' }
       expect(response).to be_successful
     end
   end

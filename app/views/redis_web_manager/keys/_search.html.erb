@@ -1,0 +1,31 @@
+<%= form_tag(keys_path, method: :get, class: 'p-4', enforce_utf8: false) do %>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <%= label_tag :query, 'Name', class: 'font-weight-bolder' %>
+        <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search key(s)' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="form-group">
+        <%= label_tag :type, 'Type', class: 'font-weight-bolder' %>
+        <%= select_tag :type, options_for_select(types_filters, params[:type]), class: 'form-control custom-select' %>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <%= label_tag :expiry, 'Expiry', class: 'font-weight-bolder' %>
+        <%= select_tag :expiry, options_for_select(expiry_filters, params[:expiry]), class: 'form-control custom-select' %>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <%= label_tag :memory, 'Memory', class: 'font-weight-bolder' %>
+        <%= select_tag :memory, options_for_select(memory_filters, params[:memory]), class: 'form-control custom-select' %>
+      </div>
+    </div>
+  </div>
+  <%= submit_tag 'Search', class: 'btn btn-primary btn-block', name: nil %>
+<% end %>

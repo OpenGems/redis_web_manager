@@ -32,7 +32,7 @@ RSpec.describe RedisWebManager::Info do
     end
 
     it 'returns a ttl value (expire)' do
-      expect(info.expire('test')).to eql(20)
+      expect(info.expiry('test')).to eql(20)
     end
 
     it 'returns a memory usage value (memory_usage)' do
