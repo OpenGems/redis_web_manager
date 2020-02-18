@@ -18,7 +18,7 @@ module RedisWebManager
       redis.type(key)
     end
 
-    def expire(key)
+    def expiry(key)
       redis.ttl(key)
     end
 

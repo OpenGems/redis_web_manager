@@ -18,7 +18,7 @@ module RedisWebManager
       content_tag(:kbd, value, class: 'bg-dark')
     end
 
-    def expire(value)
+    def expiry(value)
       if value == -1
         'No expiration date'
       else

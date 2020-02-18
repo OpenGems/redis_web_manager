@@ -17,11 +17,11 @@ RSpec.describe RedisWebManager::ApplicationHelper, type: :helper do
     end
 
     it 'returns a no expiration' do
-      expect(helper.expire(-1)).to eql('No expiration date')
+      expect(helper.expiry(-1)).to eql('No expiration date')
     end
 
     it 'returns a expiration' do
-      expect(helper.expire(86_400)).to eql('1 day')
+      expect(helper.expiry(86_400)).to eql('1 day')
     end
   end
 end

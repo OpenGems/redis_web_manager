@@ -9,21 +9,12 @@
           </h5>
         </div>
         <div class="card-body p-0">
-          <%= form_tag(keys_path, method: :get, class: 'p-4 form-inline', enforce_utf8: false) do %>
-            <div class="form-group">
-              <%= label_tag :query, 'Name', class: 'font-weight-bolder mr-1' %>
-              <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Search key(s)' %>
-            </div>
-            <div class="form-group mx-3">
-              <%= label_tag :type, 'Type', class: 'font-weight-bolder mr-1' %>
-              <%= select_tag :type, options_for_select(types_filters, params[:type]), class: 'form-control custom-select' %>
-            </div>
-            <div class="form-group mx-3">
-              <%= label_tag :expiry_date, 'Expiration date', class: 'font-weight-bolder mr-1' %>
-              <%= select_tag :expiry_date, options_for_select(expiry_date_filters, params[:expiry_date]), class: 'form-control custom-select' %>
-            </div>
-            <%= submit_tag 'Search', class: 'btn btn-primary ml-4', name: nil %>
-          <% end %>
+          <a class="btn btn-link p-2" data-toggle="collapse" href="#search" role="button" aria-expanded="false" aria-controls="search">
+            View search
+          </a>
+          <div class="collapse" id="search">
+            <%= render partial: 'redis_web_manager/keys/search' %>
+          </div>
           <div class="table-responsive">
             <table class="table mb-0">
               <thead>
@@ -39,7 +30,7 @@
               <% @keys.each do |key| %>
                 <tr>
                   <td><%= link_to (key[:key]).truncate(45), key_path(key: key[:key]), title: "Show #{key[:key]}" %></td>
-                  <td><%= expire(key[:expire]) %></td>
+                  <td><%= expiry(key[:expiry]) %></td>
                   <td><code><%= number_to_human_size(key[:memory]) %></code></td>
                   <td><kbd class="bg-dark"><%= key[:type] %></kbd></td>
                   <td>
