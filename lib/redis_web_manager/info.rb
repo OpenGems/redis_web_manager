@@ -11,7 +11,7 @@ module RedisWebManager
     end
 
     def search(query)
-      redis.scan_each(match: "*#{query.try(:downcase)}*").to_a
+      redis.scan_each(match: "*#{query}*").to_a
     end
 
     def type(key)
