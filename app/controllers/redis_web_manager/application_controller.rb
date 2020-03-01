@@ -17,19 +17,27 @@ module RedisWebManager
     end
 
     def info
-      @info ||= RedisWebManager::Info.new
+      @info ||= RedisWebManager::Info.new(instance)
     end
 
     def connection
-      @connection ||= RedisWebManager::Connection.new
+      @connection ||= RedisWebManager::Connection.new(instance)
     end
 
     def action
-      @action ||= RedisWebManager::Action.new
+      @action ||= RedisWebManager::Action.new(instance)
     end
 
     def data
-      @data ||= RedisWebManager::Data.new
+      @data ||= RedisWebManager::Data.new(instance)
+    end
+
+    def instance
+      @instance ||= params[:instance].presence || redises[0]
+    end
+
+    def redises
+      @redises ||= RedisWebManager.redises
     end
   end
 end
