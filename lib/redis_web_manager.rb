@@ -10,7 +10,7 @@ require 'redis'
 
 module RedisWebManager
   mattr_accessor :redis, default: ::Redis.new
-  mattr_accessor :redises, default: [redis]
+  mattr_accessor :redises, default: { default: redis }
   mattr_accessor :lifespan, default: 15.days
   mattr_accessor :authenticate, default: nil
 
@@ -23,9 +23,9 @@ module RedisWebManager
     private
 
     def check_attrs
-      redises.each do |r|
-        unless r.is_a?(::Redis)
-          raise(ArgumentError, "Invalid Redis instance for #{r}, use like that Redis.new")
+      redises.each do |k, v|
+        unless v.is_a?(::Redis)
+          raise(ArgumentError, "Invalid Redis instance for #{k}, use like that Redis.new")
         end
       end
       unless redis.is_a?(::Redis)

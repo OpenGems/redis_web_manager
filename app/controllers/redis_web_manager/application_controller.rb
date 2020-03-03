@@ -5,6 +5,8 @@ module RedisWebManager
     protect_from_forgery with: :exception
 
     before_action :authenticated?, if: :authenticate
+    before_action :valid_instance?
+    helper_method :redises
 
     private
 
@@ -32,8 +34,17 @@ module RedisWebManager
       @data ||= RedisWebManager::Data.new(instance)
     end
 
+    def valid_instance?
+      if instance.nil?
+        redirect_to root_url(instance: redises.keys[0])
+        return
+      end
+      return if redises.keys.include?(instance.to_sym)
+      redirect_to root_url(instance: redises.keys[0])
+    end
+
     def instance
-      @instance ||= params[:instance].presence || redises[0]
+      @instance ||= params[:instance].presence
     end
 
     def redises

@@ -5,13 +5,13 @@ module RedisWebManager
     attr_accessor :instance
 
     def initialize(instance)
-      @instance = instance
+      @instance = instance || redises.keys[0]
     end
 
     private
 
     def redis
-      @redis ||= redises[redises.index(instance)]
+      @redis ||= redises[instance.to_sym]
     end
 
     def redises
