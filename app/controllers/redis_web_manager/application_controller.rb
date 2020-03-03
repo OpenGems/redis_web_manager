@@ -7,6 +7,7 @@ module RedisWebManager
     before_action :authenticated?, if: :authenticate
     before_action :valid_instance?
     helper_method :redises
+    helper_method :instance
 
     private
 
@@ -34,13 +35,13 @@ module RedisWebManager
       @data ||= RedisWebManager::Data.new(instance)
     end
 
+    def default_url_options(options = {})
+      options.merge(instance: instance)
+    end
+
     def valid_instance?
-      if instance.nil?
-        redirect_to root_url(instance: redises.keys[0])
-        return
-      end
-      return if redises.keys.include?(instance.to_sym)
-      redirect_to root_url(instance: redises.keys[0])
+      default_instance = redises.keys[0]
+      redirect_to dashboard_url(instance: default_instance) if instance.nil?
     end
 
     def instance

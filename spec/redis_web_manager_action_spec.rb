@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe RedisWebManager::Action do
   let(:action) do
-    RedisWebManager::Action.new
+    RedisWebManager::Action.new(RedisWebManager.redises.keys[0])
   end
 
   let(:redis) do

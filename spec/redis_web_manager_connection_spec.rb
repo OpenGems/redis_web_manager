@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe RedisWebManager::Connection do
   let(:connection) do
-    RedisWebManager::Connection.new
+    RedisWebManager::Connection.new(RedisWebManager.redises.keys[0])
   end
 
   describe 'connection' do
