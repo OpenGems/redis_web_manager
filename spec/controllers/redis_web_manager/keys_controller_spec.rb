@@ -8,6 +8,10 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
     ::Redis.new
   end
 
+  let(:default) do
+    RedisWebManager.redises.keys[0]
+  end
+
   describe 'GET #index' do
     it 'returns a success response' do
       get :index
