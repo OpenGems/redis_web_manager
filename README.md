@@ -121,7 +121,7 @@ class DashboardJob
   include SuckerPunch::Job
 
   def perform
-    data = RedisWebManager::Data.new
+    data = RedisWebManager::Data.new(:default)
     data.perform
   end
 end
