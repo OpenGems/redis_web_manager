@@ -11,7 +11,7 @@ module RedisWebManager
     def perform
       now = Time.now.to_i
       seconds = (now + lifespan.to_i) - now
-      redis.setex("#{instance}_#{BASE}_#{now}", seconds, serialize.to_json)
+      redis.setex("#{BASE}_#{instance}_#{now}", seconds, serialize.to_json)
     end
 
     def flush
@@ -21,7 +21,7 @@ module RedisWebManager
     private
 
     def data
-      @data ||= redis.scan_each(match: "#{instance}_#{BASE}_*").to_a
+      @data ||= redis.scan_each(match: "#{BASE}_#{instance}_*").to_a
     end
 
     def lifespan
