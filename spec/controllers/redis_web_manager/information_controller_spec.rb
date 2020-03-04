@@ -11,7 +11,7 @@ RSpec.describe RedisWebManager::InformationController, type: :controller do
 
   describe 'GET #index' do
     it 'returns a success response' do
-      get :index, instance: default.to_s
+      get :index, params: { instance: default.to_s }
       expect(response).to be_successful
     end
   end

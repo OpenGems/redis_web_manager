@@ -11,21 +11,21 @@ RSpec.describe RedisWebManager::ActionsController, type: :controller do
 
   describe 'DELETE #reset' do
     it 'returns a success response' do
-      delete :reset, instance: default.to_s
+      delete :reset, params: { instance: default.to_s }
       expect(response).to be_redirect
     end
   end
 
   describe 'DELETE #flushdb' do
     it 'returns a success response' do
-      delete :flushdb, instance: default.to_s
+      delete :flushdb, params: { instance: default.to_s }
       expect(response).to be_redirect
     end
   end
 
   describe 'DELETE #flushall' do
     it 'returns a success response' do
-      delete :flushall, instance: default.to_s
+      delete :flushall, params: { instance: default.to_s }
       expect(response).to be_redirect
     end
   end
