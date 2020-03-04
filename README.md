@@ -56,7 +56,10 @@ You can configure RedisWebManager:
 # initializers/redis_web_manager.rb
 
 RedisWebManager.configure do |config|
-  config.redis = Redis.new(db: 1) # Default Redis.new (Instance of Redis)
+  config.redises = {
+    default: Redis.new(db: 1),
+    production: Redis.new(url: 'XXX')
+  } # Default { default: Redis.new } (Hash with instance(s) of Redis)
   config.lifespan = 2.days # Default 15.days (Lifespan of each keys for dashboard)
   config.authenticate = proc {
                            authenticate_or_request_with_http_basic do |username, password|
@@ -70,8 +73,17 @@ end
 
 In order to have data on your dashboard you must collect the data like this:
 ```ruby
-data = RedisWebManager::Data.new
+data = RedisWebManager::Data.new(:default)
 data.perform
+```
+
+or 
+
+```ruby
+RedisWebManager.redises.keys.each do |instance|
+  data = RedisWebManager::Data.new(instance)
+  data.perform
+end
 ```
 
 If you are using a system to run background tasks in your application (like Sidekiq, Sucker Punch or ActiveJob), you can write your own background task to update the dashboard statistics.
@@ -88,6 +100,21 @@ class DashboardWorker
 end
 ```
 
+or
+
+```ruby
+class DashboardWorker
+  include Sidekiq::Worker
+
+  def perform
+    RedisWebManager.redises.keys.each do |instance|
+      data = RedisWebManager::Data.new(instance)
+      data.perform
+    end
+  end
+end
+```
+
 Sucker Punch exemple:
 ```ruby
 class DashboardJob
@@ -100,11 +127,26 @@ class DashboardJob
 end
 ```
 
+or
+
+```ruby
+class DashboardJob
+  include SuckerPunch::Job
+
+  def perform
+    RedisWebManager.redises.keys.each do |instance|
+      data = RedisWebManager::Data.new(instance)
+      data.perform
+    end
+  end
+end
+```
+
+
 
 
 ## Todo
 * [ ] Add graph for most used commands
-* [ ] Manage multiple redis instances
 * [ ] Real time chart update
 * [ ] Alert system (ex: triggered when memory is peaking)
 * [ ] Command line interface to manage your redis database

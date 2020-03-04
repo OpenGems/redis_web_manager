@@ -8,19 +8,23 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
     ::Redis.new
   end
 
+  let(:default) do
+    RedisWebManager.redises.keys[0]
+  end
+
   describe 'GET #index' do
     it 'returns a success response' do
-      get :index
+      get :index, params: { instance: default.to_s }
       expect(response).to be_successful
-      get :index, params: { query: 'test' }
+      get :index, params: { query: 'test', instance: default.to_s }
       expect(response).to be_successful
-      get :index, params: { type: 'string' }
+      get :index, params: { type: 'string', instance: default.to_s }
       expect(response).to be_successful
-      get :index, params: { expiry: '-1' }
+      get :index, params: { expiry: '-1', instance: default.to_s }
       expect(response).to be_successful
-      get :index, params: { expiry: '3600' }
+      get :index, params: { expiry: '3600', instance: default.to_s }
       expect(response).to be_successful
-      get :index, params: { memory: '1000' }
+      get :index, params: { memory: '1000', instance: default.to_s }
       expect(response).to be_successful
     end
   end
@@ -28,7 +32,7 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
   describe 'GET #show' do
     it 'returns a success response' do
       redis.set('test', 'test')
-      get :show, params: { key: 'test' }
+      get :show, params: { key: 'test', instance: default.to_s }
       expect(response).to be_successful
     end
   end
@@ -36,7 +40,7 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
   describe 'GET #edit' do
     it 'returns a success response' do
       redis.set('test', 'test')
-      get :edit, params: { key: 'test' }
+      get :edit, params: { key: 'test', instance: default.to_s }
       expect(response).to be_successful
     end
   end
@@ -44,7 +48,7 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
   describe 'GET #update' do
     it 'returns a success response' do
       redis.set('test', 'test')
-      put :update, params: { old_name: 'test', new_name: 'testtest' }
+      put :update, params: { old_name: 'test', new_name: 'testtest', instance: default.to_s }
       expect(response).to be_redirect
     end
   end
@@ -52,7 +56,7 @@ RSpec.describe RedisWebManager::KeysController, type: :controller do
   describe 'GET #destroy' do
     it 'returns a success response' do
       redis.set('test', 'test')
-      delete :destroy, params: { key: 'test' }
+      delete :destroy, params: { key: 'test', instance: default.to_s }
       expect(response).to be_redirect
     end
   end

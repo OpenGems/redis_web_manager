@@ -1,13 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
   <div class="container">
-    <%= link_to 'Redis Web Manager', root_path, title: 'Redis Web Manager', class: 'navbar-brand' %>
+    <%= link_to 'Redis Web Manager', dashboard_path, title: 'Redis Web Manager', class: 'navbar-brand' %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Redis Web Manager">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown mr-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= instance.humanize.capitalize %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% redises.each do |k, v| %>
+                <%= link_to v.connection[:id],
+                            dashboard_path(instance: k),
+                            title: k,
+                            class: instance == k.to_s ? 'dropdown-item active' : 'dropdown-item'  %>
+              <% end %>
+            </div>
+          </li>
         <li class="nav-item">
-          <%= link_to 'Dashboard', root_path, title: 'Dashboard', class: 'nav-link' %>
+          <%= link_to 'Dashboard', dashboard_path, title: 'Dashboard', class: 'nav-link' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Clients', clients_path, title: 'Clients', class: 'nav-link' %>
