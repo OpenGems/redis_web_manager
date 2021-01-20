@@ -40,5 +40,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'pagy', '~> 3.8'
   spec.add_dependency 'rails', '>= 5.2', '< 7'
-  spec.add_dependency 'redis', '~> 4.1.0'
+  spec.add_dependency 'redis', '>= 4.1.0', '< 5'
 end
