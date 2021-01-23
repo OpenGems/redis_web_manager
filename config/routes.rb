@@ -2,6 +2,7 @@
 
 RedisWebManager::Engine.routes.draw do
   redises_keys = RedisWebManager.redises.keys
+
   scope ':instance', instance: /#{redises_keys.join('|')}/ do
     # Configuration
     get :configuration, to: 'configuration#index'
