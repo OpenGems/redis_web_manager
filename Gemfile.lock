@@ -4,7 +4,7 @@ PATH
     redis_web_manager (0.3.4)
       pagy (~> 3.8)
       rails (>= 5.2, < 7)
-      redis (~> 4.1.0)
+      redis (>= 4.1.0, < 5)
 
 GEM
   remote: https://rubygems.org/
