@@ -8,7 +8,6 @@ RSpec.describe RedisWebManager::Connection do
   end
 
   describe 'connection' do
-
     it 'returns a host' do
       expect(connection.host).to eql('127.0.0.1')
     end
@@ -28,6 +27,5 @@ RSpec.describe RedisWebManager::Connection do
     it 'returns a location' do
       expect(connection.location).to eql('127.0.0.1:6379')
     end
-
   end
 end

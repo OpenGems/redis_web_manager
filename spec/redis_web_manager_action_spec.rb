@@ -8,7 +8,7 @@ RSpec.describe RedisWebManager::Action do
   end
 
   let(:redis) do
-    ::Redis.new
+    Redis.new
   end
 
   describe 'action' do

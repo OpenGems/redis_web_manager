@@ -40,7 +40,7 @@ RSpec.describe RedisWebManager do
       expect do
         RedisWebManager.configure do |c|
           c.redises = {
-            default: ::Redis.new
+            default: Redis.new
           }
           c.lifespan = 1
         end
@@ -51,12 +51,24 @@ RSpec.describe RedisWebManager do
       expect do
         RedisWebManager.configure do |c|
           c.redises = {
-            default: ::Redis.new
+            default: Redis.new
           }
           c.lifespan = -1.days
         end
       end.to raise_error(ArgumentError, 'Invalid lifespan, value must be greater than 0')
     end
 
+    it 'returns instances' do
+      RedisWebManager.configure do |c|
+        c.redises = {
+          foo: Redis.new,
+          bar: Redis.new
+        }
+        c.lifespan = 12.days
+      end
+
+      expect(RedisWebManager.redises.keys).to eql(%i[foo bar])
+      expect(RedisWebManager.redises.values.map(&:class)).to eql([Redis, Redis])
+    end
   end
 end

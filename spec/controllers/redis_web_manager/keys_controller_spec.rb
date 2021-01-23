@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe RedisWebManager::KeysController, type: :controller do
   routes { RedisWebManager::Engine.routes }
   let(:redis) do
-    ::Redis.new
+    Redis.new
   end
 
   let(:default) do

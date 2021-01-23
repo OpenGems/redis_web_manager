@@ -8,7 +8,7 @@ RSpec.describe RedisWebManager::Info do
   end
 
   let(:redis) do
-    ::Redis.new
+    Redis.new
   end
 
   describe 'info' do
