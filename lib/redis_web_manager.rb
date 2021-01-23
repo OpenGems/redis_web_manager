@@ -6,10 +6,11 @@ require 'redis_web_manager/action'
 require 'redis_web_manager/connection'
 require 'redis_web_manager/info'
 require 'redis_web_manager/data'
+require 'active_support/time'
 require 'redis'
 
 module RedisWebManager
-  mattr_accessor :redises, default: { default: ::Redis.new }
+  mattr_accessor :redises, default: { default: Redis.new }
   mattr_accessor :lifespan, default: 15.days
   mattr_accessor :authenticate, default: nil
 
@@ -26,7 +27,7 @@ module RedisWebManager
         raise(ArgumentError, 'Invalid redises hash, use like that { test: Redis.new }')
       end
       redises.each do |k, v|
-        unless v.is_a?(::Redis)
+        unless v.is_a?(Redis)
           raise(ArgumentError, "Invalid Redis instance for #{k}, use like that Redis.new")
         end
       end
