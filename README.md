@@ -57,8 +57,8 @@ You can configure RedisWebManager:
 
 RedisWebManager.configure do |config|
   config.redises = {
-    default: Redis.new(db: 1),
-    production: Redis.new(url: 'XXX')
+    instance_1: Redis.new(db: 1),
+    instance_2: Redis.new(url: 'XXX')
   } # Default { default: Redis.new } (Hash with instance(s) of Redis)
   config.lifespan = 2.days # Default 15.days (Lifespan of each keys for dashboard)
   config.authenticate = proc {
@@ -73,7 +73,7 @@ end
 
 In order to have data on your dashboard you must collect the data like this:
 ```ruby
-data = RedisWebManager::Data.new(:default)
+data = RedisWebManager::Data.new(:instance_1)
 data.perform
 ```
 
@@ -94,7 +94,7 @@ class DashboardWorker
   include Sidekiq::Worker
 
   def perform
-    data = RedisWebManager::Data.new(:default)
+    data = RedisWebManager::Data.new(:instance_1)
     data.perform
   end
 end
@@ -121,7 +121,7 @@ class DashboardJob
   include SuckerPunch::Job
 
   def perform
-    data = RedisWebManager::Data.new(:default)
+    data = RedisWebManager::Data.new(:instance_1)
     data.perform
   end
 end
