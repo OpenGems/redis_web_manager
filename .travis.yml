@@ -3,7 +3,7 @@ os: linux
 language: ruby
 cache: bundler
 services:
-  - redis-server
+  - redis
 rvm:
   - 2.5.5
   - 2.6.3
