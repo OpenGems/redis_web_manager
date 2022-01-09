@@ -8,9 +8,11 @@ rvm:
   - 2.5.5
   - 2.6.3
   - 2.7.0
+  - 3.0.3
 gemfile:
   - gemfiles/Gemfile-5-2
   - gemfiles/Gemfile-6-0
+  - gemfiles/Gemfile-7-0
 before_install: gem install bundler -v 2.1.0
 before_script: bundle install
 script: RAILS_ENV=test bundle exec rspec

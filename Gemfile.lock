@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    redis_web_manager (0.4.0)
+    redis_web_manager (0.5.0)
       pagy (~> 3.8)
-      rails (>= 5.2, < 7)
+      rails (>= 5.2, < 8)
       redis (>= 4.1.0, < 5)
 
 GEM
@@ -131,7 +131,7 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rake (13.0.6)
-    redis (4.4.0)
+    redis (4.5.1)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
