@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     redis_web_manager (0.5.0)
-      pagy (~> 3.8)
-      rails (>= 5.2, < 8)
+      pagy (>= 5.0, < 6)
+      rails (>= 5.2, < 7)
       redis (>= 4.1.0, < 5)
 
 GEM
@@ -77,14 +77,14 @@ GEM
       thor (>= 0.19.4, < 2.0)
       tins (~> 1.6)
     crass (1.0.6)
-    diff-lcs (1.4.4)
+    diff-lcs (1.5.0)
     docile (1.4.0)
     erubi (1.10.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
-    json (2.5.1)
+    json (2.6.1)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -93,13 +93,11 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.6.1)
     minitest (5.15.0)
     nio4r (2.5.8)
-    nokogiri (1.12.5)
-      mini_portile2 (~> 2.6.1)
+    nokogiri (1.13.0-x86_64-darwin)
       racc (~> 1.4)
-    pagy (3.14.0)
+    pagy (5.7.1)
     racc (1.6.0)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -148,7 +146,7 @@ GEM
       rspec-expectations (~> 3.10)
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
-    rspec-support (3.10.2)
+    rspec-support (3.10.3)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -164,8 +162,8 @@ GEM
     sync (0.5.0)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
-    thor (1.1.0)
-    tins (1.29.1)
+    thor (1.2.1)
+    tins (1.31.0)
       sync
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -175,7 +173,7 @@ GEM
     zeitwerk (2.5.3)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-20
 
 DEPENDENCIES
   coveralls (~> 0.8)
@@ -184,4 +182,4 @@ DEPENDENCIES
   simplecov (~> 0.16)
 
 BUNDLED WITH
-   2.2.24
+   2.2.15

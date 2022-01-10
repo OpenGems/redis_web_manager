@@ -43,12 +43,18 @@ module RedisWebManager
     end
 
     def zrange(key, start, stop, options = {})
+      if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('3.0.0')
+        return redis.zrange(key, start, stop, **options)
+      end
+
       redis.zrange(key, start, stop, options)
     end
 
     def hgetall(key)
       redis.hgetall(key)
     end
+
+    Gem::Version.new(RUBY_VERSION)
 
     def dbsize
       @dbsize ||= redis.dbsize
