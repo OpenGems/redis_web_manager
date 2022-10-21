@@ -41,7 +41,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'pagy', '>= 5.0', '< 6'
   spec.add_dependency 'rails', '>= 5.2', '< 8'
   spec.add_dependency 'redis', '>= 4.1.0', '< 5'
-  if Rails.version.to_i >= 7
-   spec.add_dependency 'sprockets-rails'
-  end
+  
+  spec.add_dependency 'sprockets-rails'
 end

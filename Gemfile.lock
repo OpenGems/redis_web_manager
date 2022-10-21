@@ -5,6 +5,7 @@ PATH
       pagy (>= 5.0, < 6)
       rails (>= 5.2, < 8)
       redis (>= 4.1.0, < 5)
+      sprockets-rails
 
 GEM
   remote: https://rubygems.org/
