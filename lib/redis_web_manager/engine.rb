@@ -5,7 +5,6 @@ module RedisWebManager
     isolate_namespace RedisWebManager
 
     initializer 'redis_web_manager.assets.precompile' do |app|
-      config.assets.precompile << "#{path}/redis_web_manager_manifest.js"
       # check if Rails api mode
       if app.config.respond_to?(:assets)
         if defined?(Sprockets) && Sprockets::VERSION >= '4'
