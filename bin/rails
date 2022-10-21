@@ -16,5 +16,5 @@ require 'rails'
 # Pick the frameworks you want:
 require 'action_controller/railtie'
 require 'action_view/railtie'
-require 'sprockets/railtie' if Rails.version.to_i < 7
+require 'sprockets/railtie'
 require 'rails/engine/commands'
