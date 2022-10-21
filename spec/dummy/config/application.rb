@@ -5,7 +5,7 @@ require_relative 'boot'
 require 'rails'
 require 'action_controller/railtie'
 require 'action_view/railtie'
-require 'sprockets/railtie'
+require 'sprockets/railtie' if Rails.version.to_i < 7
 
 Bundler.require(*Rails.groups)
 require 'redis_web_manager'
