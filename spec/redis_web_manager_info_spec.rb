@@ -31,6 +31,11 @@ RSpec.describe RedisWebManager::Info do
       expect(info.search('testtesttest')).to eql(['testtesttest'])
     end
 
+    it 'returns an empty array if query string is empty' do
+      expect(info.search(nil)).to eql([])
+      expect(info.search('')).to eql([])
+    end
+
     it 'returns a ttl value (expire)' do
       expect(info.expiry('test')).to eql(20)
     end
