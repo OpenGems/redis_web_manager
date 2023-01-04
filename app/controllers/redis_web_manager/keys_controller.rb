@@ -1,12 +1,7 @@
 # frozen_string_literal: true
 
-require 'pagy'
-require 'pagy/extras/array'
-require 'pagy/extras/bootstrap'
-
 module RedisWebManager
   class KeysController < ApplicationController
-    include ::Pagy::Backend
 
     # GET /keys
     def index

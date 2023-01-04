@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
+require 'pagy'
+require 'pagy/extras/array'
+require 'pagy/extras/bootstrap'
+
 module RedisWebManager
   class ApplicationController < ActionController::Base
+    include ::Pagy::Backend
+
     protect_from_forgery with: :exception
 
     before_action :authenticated?, if: :authenticate
