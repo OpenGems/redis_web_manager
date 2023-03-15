@@ -39,6 +39,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', '~> 0.16'
 
   spec.add_dependency 'pagy', '>= 5.0', '< 6'
-  spec.add_dependency 'rails', '>= 5.2', '< 7'
+  spec.add_dependency 'rails', '>= 5.2'
   spec.add_dependency 'redis', '>= 4.1.0', '< 5'
 end
