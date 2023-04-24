@@ -54,8 +54,6 @@ module RedisWebManager
       redis.hgetall(key)
     end
 
-    Gem::Version.new(RUBY_VERSION)
-
     def dbsize
       @dbsize ||= redis.dbsize
     end
