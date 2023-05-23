@@ -22,3 +22,6 @@ jobs:
       gemfile: gemfiles/Gemfile-7-0
     - rvm: 2.6.3
       gemfile: gemfiles/Gemfile-7-0
+    - rvm: 3.0.1
+      gemfile: gemfiles/Gemfile-5-2
+ 
