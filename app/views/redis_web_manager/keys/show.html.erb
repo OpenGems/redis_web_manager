@@ -22,7 +22,7 @@
         <kbd class="bg-dark"><%= @key[:type] %></kbd>
       </p>
       <p class="font-weight-light">
-        <%= link_to 'Delete', destroy_key_path(key: @key[:key]), method: :delete, data: {confirm: 'Are you sure ?'}, title: "Delete #{@key}", class: 'btn btn-sm btn-danger w-100 mb-2' %>
+        <%= link_to 'Delete', destroy_key_path(key: @key[:key]), method: :delete, data: {confirm: 'Are you sure ?'}, title: "Delete #{@key}", class: "btn btn-sm btn-danger w-100 mb-2 #{disabled_if_readonly}" %>
         <%= link_to 'Back', keys_path, title: 'View keys', class: 'btn btn-sm btn-primary w-100' %>
       </p>
     </div>

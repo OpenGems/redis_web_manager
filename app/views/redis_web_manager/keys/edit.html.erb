@@ -7,7 +7,8 @@
           <%= text_field_tag :key, @key[:key], class: "form-control" %>
           <%= hidden_field_tag :old_key, @key[:key] %>
         </div>
-        <%= submit_tag "Submit", class: "btn btn-default btn-primary" %>
+        <%= submit_tag "Submit", class: "btn btn-default btn-primary #{disabled_if_readonly}" %>
+        <%= link_to 'Back', keys_path, title: 'View keys', class: 'btn btn-default btn-primary' %>
       <% end %>
     </div>
   </div>

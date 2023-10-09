@@ -25,6 +25,16 @@ module RedisWebManager
       RedisWebManager.authenticate
     end
 
+    def readonly?
+      RedisWebManager.readonly
+    end
+
+    def perform_unless_readonly
+      return flash[:danger] = "Can't be done in readonly mode!" if readonly?
+
+      yield
+    end
+
     def info
       @info ||= RedisWebManager::Info.new(instance)
     end

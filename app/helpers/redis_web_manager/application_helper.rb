@@ -25,5 +25,26 @@ module RedisWebManager
         distance_of_time_in_words(value)
       end
     end
+
+    def active_if(path)
+      current_page?(path) ? 'active' : ''
+    end
+
+    def disabled_if_readonly
+      RedisWebManager.readonly ? 'disabled' : ''
+    end
+
+    def flash_class(level)
+      {
+        'primary' => 'alert alert-primary',
+        'secondary' => 'alert alert-secondary',
+        'success' => 'alert alert-success',
+        'danger' => 'alert alert-danger',
+        'warning' => 'alert alert-warning',
+        'info' => 'alert alert-info',
+        'light' => 'alert alert-light',
+        'dark' => 'alert alert-dark'
+      }[level]
+    end
   end
 end

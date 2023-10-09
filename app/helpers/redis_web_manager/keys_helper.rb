@@ -29,5 +29,11 @@ module RedisWebManager
        ['Less than 10 MB', 10_000_000],
        ['Less than 100 MB', 100_000_000]]
     end
+
+    def clear_filters_link
+      return unless (params.keys & %w[query type expiry memory]).any?
+
+      link_to 'Clear filters', keys_path, class: 'badge badge-secondary'
+    end
   end
 end

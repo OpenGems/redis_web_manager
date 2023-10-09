@@ -4,19 +4,19 @@ module RedisWebManager
   class ActionsController < ApplicationController
     # DELETE /reset
     def reset
-      data.flush
+      perform_unless_readonly { data.flush }
       redirect_to root_url
     end
 
     # DELETE /flushdb
     def flushdb
-      action.flushdb
+      perform_unless_readonly { action.flushdb }
       redirect_to root_url
     end
 
     # DELETE /flushall
     def flushall
-      action.flushall
+      perform_unless_readonly { action.flushall }
       redirect_to root_url
     end
   end

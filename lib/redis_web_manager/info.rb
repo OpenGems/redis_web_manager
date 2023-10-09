@@ -11,7 +11,7 @@ module RedisWebManager
     end
 
     def search(query)
-      query.blank? ? [] : redis.scan_each(match: "*#{query}*").to_a
+      query.blank? ? redis.keys : redis.scan_each(match: "*#{query}*").to_a
     end
 
     def type(key)

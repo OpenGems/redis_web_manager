@@ -2,7 +2,6 @@
 
 module RedisWebManager
   class KeysController < ApplicationController
-
     # GET /keys
     def index
       @status = info.status
@@ -29,7 +28,7 @@ module RedisWebManager
       old_key = params[:old_name].presence
       new_name = params[:new_name].presence
       redirect_to keys_url if old_key.nil? || new_name.nil?
-      action.rename(old_key, new_name)
+      perform_unless_readonly { action.rename(old_key, new_name) }
       redirect_to keys_url
     end
 
@@ -37,7 +36,7 @@ module RedisWebManager
     def destroy
       key = params[:key].presence
       redirect_to keys_url if key.nil?
-      action.del(key)
+      perform_unless_readonly { action.del(key) }
       redirect_to keys_url
     end
 

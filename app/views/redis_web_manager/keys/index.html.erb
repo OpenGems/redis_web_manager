@@ -5,13 +5,14 @@
       <div class="card">
         <div class="card-header">
           <h5 class="card-title mb-0">
-            Keys
+            Keys (<%= @pagy.count %>)
           </h5>
         </div>
         <div class="card-body p-0">
           <a class="btn btn-link p-2" data-toggle="collapse" href="#search" role="button" aria-expanded="false" aria-controls="search">
             View search
           </a>
+          <%= clear_filters_link %>
           <div class="collapse" id="search">
             <%= render partial: 'redis_web_manager/keys/search' %>
           </div>
@@ -34,8 +35,8 @@
                   <td><code><%= number_to_human_size(key[:memory]) %></code></td>
                   <td><kbd class="bg-dark"><%= key[:type] %></kbd></td>
                   <td>
-                    <%= link_to 'Edit', edit_key_path(key: key[:key]), title: "Edit #{key[:key]}", class: 'btn btn-sm btn-primary' %>
-                    <%= link_to 'Delete', destroy_key_path(key: key[:key]), method: :delete, data: {confirm: 'Are you sure ?'}, title: "Delete #{key[:key]}", class: 'btn btn-sm btn-danger ml-2' %>
+                    <%= link_to 'Edit', edit_key_path(key: key[:key]), title: "Edit #{key[:key]}", class: "btn btn-sm btn-primary #{disabled_if_readonly}" %>
+                    <%= link_to 'Delete', destroy_key_path(key: key[:key]), method: :delete, data: {confirm: 'Are you sure ?'}, title: "Delete #{key[:key]}", class: "btn btn-sm btn-danger ml-2 #{disabled_if_readonly}" %>
                   </td>
                 </tr>
               <% end %>

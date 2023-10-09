@@ -13,6 +13,7 @@ module RedisWebManager
   mattr_accessor :redises, default: { default: Redis.new }
   mattr_accessor :lifespan, default: 15.days
   mattr_accessor :authenticate, default: nil
+  mattr_accessor :readonly, default: true
 
   class << self
     def configure
@@ -30,6 +31,9 @@ module RedisWebManager
         unless v.is_a?(Redis)
           raise(ArgumentError, "Invalid Redis instance for #{k}, use like that Redis.new")
         end
+      end
+      unless readonly.is_a?(TrueClass) || readonly.is_a?(FalseClass)
+        raise(ArgumentError, 'Invalid readonly, use true or false')
       end
       unless lifespan.is_a?(::ActiveSupport::Duration)
         raise(ArgumentError, 'Invalid lifespan, use like that 15.days, 15.minutes etc')
