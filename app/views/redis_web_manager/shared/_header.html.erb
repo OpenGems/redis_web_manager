@@ -12,7 +12,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% redises.each do |k, v| %>
-                <%= link_to v.connection[:id],
+                <%= link_to "#{k.to_s.humanize.capitalize} - #{v.connection[:id]}",
                             dashboard_path(instance: k),
                             title: k,
                             class: instance == k.to_s ? 'dropdown-item active' : 'dropdown-item'  %>
