@@ -1,3 +1,6 @@
+# ⚠️ Gem status
+Word of caution if you intend to use this project in production. This gem has not been properly maintained in the past years. Maintainers are trying their best to revive it but it's not their main priority. Thank you for your comprehension.
+
 # RedisWebManager
 
 [![Gem Version](https://badge.fury.io/rb/redis_web_manager.svg)](https://badge.fury.io/rb/redis_web_manager)
